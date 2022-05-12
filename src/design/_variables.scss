@@ -29,7 +29,7 @@ $header-bg: #ffffff;
 $header-item-color: #555b6d;
 
 // Topbar - Dark
-$header-dark-bg: #2a3042;
+$header-dark-bg: #fff;
 $header-dark-item-color: #e9ecef;
 
 // Topbar Search
@@ -44,7 +44,7 @@ $footer-color: #74788d;
 $topnav-bg:   #fff;
 
 $menu-item-color: #545a6d;
-$menu-item-active-color: #556ee6;
+$menu-item-active-color: #556ee6; //#A23662
 
 // Right Sidebar
 $rightbar-width:  280px;
@@ -106,7 +106,10 @@ $grays: (
 
 // fusv-enable
 
-$blue:    #556ee6;
+$magenta:    #A23662;//#556ee6
+$blue:    #036183;
+$lightblue:    #E7EFF8;
+$oceonBlue:  #036183;
 $indigo:  #564ab1;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
@@ -120,6 +123,9 @@ $cyan:    #50a5f1;
 // scss-docs-start colors-map
 $colors: (
     "blue":       $blue,
+    "oceonBlue":       $oceonBlue,
+    "magenta":    $magenta,
+    "lightblue":  $lightblue,
     "indigo":     $indigo,
     "purple":     $purple,
     "pink":       $pink,
@@ -136,6 +142,9 @@ $colors: (
 // scss-docs-end colors-map
 
 $primary:       $blue;
+$magenta:       $magenta;
+$lightblue:     $lightblue;
+$oceonBlue:     $oceonBlue;
 $secondary:     $gray-600;
 $success:       $green;
 $info:          $cyan;
@@ -147,6 +156,9 @@ $dark:          $gray-800;
 // scss-docs-start theme-colors-map
 $theme-colors: (
     "primary":    $primary,
+    "magenta":    $magenta,
+    "bg-lightblue": $lightblue,
+    "oceonBlue":       $oceonBlue,
     "secondary":  $secondary,
     "success":    $success,
     "info":       $info,
@@ -345,7 +357,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   #f8f8fb;
+$body-bg:                   #F6F8FB;//#f8f8fb
 $body-color:                $gray-700;
 $body-text-align:           null;
 

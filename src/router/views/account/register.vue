@@ -8,7 +8,7 @@
               <div class="col-7">
                 <div class="text-primary p-4">
                   <h5 class="text-primary">Bienvenue !</h5>
-                  <p>Créez votre compte Fibourse maintenant.</p>
+                  <p>Créez votre compte Oaca maintenant.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -175,79 +175,6 @@
                   La longueur du mot de passe doit être supérieure à 5
                 </div>
               </b-form-group>
-              <b-form-group
-                  class="mb-3"
-                  id="bank-group"
-                  label="Banque"
-                  label-for="Bank"
-              >
-                <b-form-input
-                    id="bank"
-                    v-model="user.bank"
-                    type="text"
-                    placeholder="Entrer votre banque"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  class="mb-3"
-                  id="address-group"
-                  label="Adresse de l'agence"
-                  label-for="address"
-              >
-                <b-form-input
-                    id="address"
-                    v-model="user.address"
-                    type="text"
-                    placeholder="Entrer votre adresse de l'agence"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  class="mb-3"
-                  id="profession-group"
-                  label="Fonction "
-                  label-for="reason"
-              >
-                <b-form-input
-                    id="reason"
-                    v-model="user.profession"
-                    type="text"
-                    placeholder="Entrer votre fonction"
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  class="mb-3"
-                  id="mobile-group"
-                  label="Mobile *"
-                  label-for="mobile"
-              >
-                <b-form-input
-                    id="mobile"
-                    v-model="user.phone"
-                    type="text"
-                    placeholder="Entrer votre mobile"
-                    :class="{
-                        'is-invalid':  submitted && !ValidatePhoneNumber(user.phone)}"
-                ></b-form-input>
-                <div
-                    v-if="submitted && !ValidatePhoneNumber(user.phone)"
-                    class="invalid-feedback"
-                >
-                  le numéro de téléphone doit être valide
-                </div>
-              </b-form-group>
-              <b-form-group
-                  class="mb-3"
-                  id="reason-group"
-                  label="Raison de la demande"
-                  label-for="reason"
-              >
-                <b-form-input
-                    id="reason"
-                    v-model="user.reason"
-                    type="text"
-                    placeholder="Entrer votre raison de la demande"
-                ></b-form-input>
-              </b-form-group>
               <div class="mt-4 mb-4 d-grid">
                 <b-button type="submit" variant="magenta" class="btn-block"
                 >S'inscrire
@@ -306,11 +233,6 @@ export default {
         confirmPassword: "",
         firstname: "",
         lastname: "",
-        phone: "",
-        bank: "",
-        address: "",
-        reason: "",
-        profession: "",
       },
       submitted: false,
       regError: null,
@@ -340,9 +262,6 @@ export default {
       lastname: {
         required,
       },
-      phone: {
-        required,
-      },
     },
   },
   computed: {
@@ -360,7 +279,7 @@ export default {
       this.submitted = true;
       // stop here if form is invalid
       this.$v.$touch();
-      if (!this.$v.$invalid && this.ValidatePhoneNumber(this.user.phone)) {
+      if (!this.$v.$invalid) {
           axios.post(registerUrl,
               {
                 username: this.user.firstname + "_" + this.user.lastname,
@@ -368,11 +287,10 @@ export default {
                 password: this.user.password,
                 firstName: this.user.firstname,
                 lastName: this.user.lastname,
-                phone: this.user.phone,
-                bank: this.user.bank,
-                address: this.user.address,
-                reason: this.user.reason,
-                profession: this.user.profession
+                Active: "false",
+                roles: "ROLE_USER",
+                createdAt: '',
+                updatedAt: '',
               },
               {
                 headers: {

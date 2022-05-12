@@ -171,7 +171,7 @@ body[data-topbar="dark"] .app-search input.form-control::-webkit-input-placehold
   color: rgba(255, 255, 255, 0.5); }
 
 body[data-sidebar="dark"] .navbar-brand-box {
-  background: #2a3042; }
+  background: #fff; }
 
 body[data-sidebar="dark"] .logo-dark {
   display: none; }
@@ -2993,7 +2993,7 @@ div.dataTables_wrapper div.dataTables_filter {
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
           box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03); }
   .checkout-tabs .nav-pills .nav-link.active {
-    background-color: #556ee6; }
+    /*background-color: #A23662; */}
   .checkout-tabs .nav-pills .nav-link .check-nav-icon {
     font-size: 36px; }
 

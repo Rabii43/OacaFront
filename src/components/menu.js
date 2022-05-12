@@ -31,12 +31,6 @@ export const menuItems = [
                 link: "/users",
                 parentId: 2
             },
-            {
-                id: 6,
-                label: "menuitems.dashboards.list.blog",
-                link: "/",
-                parentId: 2
-            }
         ]
     },
 ];

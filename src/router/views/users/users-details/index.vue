@@ -36,8 +36,8 @@
                 id="formFile"
             />
             <h5 class="card-title mt-4" v-if="!toEditProfile && !Loading">
-              {{ (usersData.first_name) ? usersData.first_name.toUpperCase() : "" }}
-              {{ (usersData.last_name) ? usersData.last_name.toUpperCase() : "" }}
+              {{ (usersData.firstname) ? usersData.firstname.toUpperCase() : "" }}
+              {{ (usersData.lastname) ? usersData.lastname.toUpperCase() : "" }}
             </h5>
             <b-spinner v-else-if="Loading" variant="success" class="mt-3" small></b-spinner>
           </div>
@@ -132,8 +132,8 @@
             <tbody>
             <tr>
               <th scope="row">Nom et prénom:</th>
-              <td v-if="usersData.first_name || usersData.last_name">{{ usersData.first_name }}
-                {{ usersData.last_name }}
+              <td v-if="usersData.firstname || usersData.lastname">{{ usersData.firstname }}
+                {{ usersData.lastname }}
               </td>
               <td v-else-if="Loading">
                 <b-spinner variant="success" small></b-spinner>
@@ -143,46 +143,6 @@
             <tr>
               <th scope="row">E-mail :</th>
               <td v-if="usersData.email">{{ usersData.email }}</td>
-              <td v-else-if="Loading">
-                <b-spinner variant="success" small></b-spinner>
-              </td>
-              <td v-else class="text-muted-color">Aucune données</td>
-            </tr>
-            <tr>
-              <th scope="row">Banque :</th>
-              <td v-if="usersData.bank">{{ usersData.bank }}</td>
-              <td v-else-if="Loading">
-                <b-spinner variant="success" small></b-spinner>
-              </td>
-              <td v-else class="text-muted-color">Aucune données</td>
-            </tr>
-            <tr>
-              <th scope="row">Adresse de l'agence :</th>
-              <td v-if="usersData.address">{{ usersData.address }}</td>
-              <td v-else-if="Loading">
-                <b-spinner variant="success" small></b-spinner>
-              </td>
-              <td v-else class="text-muted-color">Aucune données</td>
-            </tr>
-            <tr>
-              <th scope="row">Fonction :</th>
-              <td v-if="usersData.profession">{{ usersData.profession }}</td>
-              <td v-else-if="Loading">
-                <b-spinner variant="success" small></b-spinner>
-              </td>
-              <td v-else class="text-muted-color">Aucune données</td>
-            </tr>
-            <tr>
-              <th scope="row">Mobile :</th>
-              <td v-if="usersData.phone">{{ usersData.phone }}</td>
-              <td v-else-if="Loading">
-                <b-spinner variant="success" small></b-spinner>
-              </td>
-              <td v-else class="text-muted-color">Aucune données</td>
-            </tr>
-            <tr>
-              <th scope="row">Raison de la demande :</th>
-              <td v-if=" usersData.reason">{{ usersData.reason }}</td>
               <td v-else-if="Loading">
                 <b-spinner variant="success" small></b-spinner>
               </td>
@@ -241,115 +201,6 @@
               Prénom est requis.
             </div>
           </b-form-group>
-          <b-form-group
-              class="mb-3"
-              id="fullname-group"
-              label="Email"
-              label-for="email"
-          >
-            <b-form-input
-                id="email"
-                v-model="user.email"
-                type="email"
-                placeholder="Entrer votre email"
-                :class="{ 'is-invalid': submitted && $v.user.email.$error }"
-            ></b-form-input>
-            <div
-                v-if="submitted && $v.user.email.$error"
-                class="invalid-feedback"
-            >
-              <span v-if="!$v.user.email.required">Email est requis.</span>
-              <span v-if="!$v.user.email.email">Veuillez entrer une adresse email valide.</span>
-            </div>
-          </b-form-group>
-          <b-form-group
-              class="mb-3"
-              id="bank-group"
-              label="Banque"
-              label-for="Bank"
-          >
-            <b-form-input
-                id="bank"
-                v-model="user.bank"
-                type="text"
-                placeholder="Entrer votre banque"
-                :class="{
-                'is-invalid': submitted && $v.user.bank.$error,
-              }"
-            ></b-form-input>
-            <div
-                v-if="submitted && !$v.user.bank.required"
-                class="invalid-feedback"
-            >
-              Bank est requis.
-            </div>
-          </b-form-group>
-          <b-form-group
-              class="mb-3"
-              id="address-group"
-              label="Adresse de l'agence"
-              label-for="address"
-          >
-            <b-form-input
-                id="address"
-                v-model="user.address"
-                type="text"
-                placeholder="Entrer votre adresse de l'agence"
-                :class="{
-                'is-invalid': submitted && $v.user.address.$error,
-              }"
-            ></b-form-input>
-            <div
-                v-if="submitted && !$v.user.address.required"
-                class="invalid-feedback"
-            >
-              Adresse de l'agence est requis.
-            </div>
-          </b-form-group>
-          <b-form-group
-              class="mb-3"
-              id="profession-group"
-              label="Fonction "
-              label-for="reason"
-          >
-            <b-form-input
-                id="reason"
-                v-model="user.profession"
-                type="text"
-                placeholder="Entrer votre fonction "
-                :class="{
-                'is-invalid': submitted && $v.user.profession.$error,
-              }"
-            ></b-form-input>
-            <div
-                v-if="submitted && !$v.user.profession.required"
-                class="invalid-feedback"
-            >
-              Fonction est requis.
-            </div>
-          </b-form-group>
-          <b-form-group
-              class="mb-3"
-              id="reason-group"
-              label="Raison de la demande"
-              label-for="reason"
-          >
-            <b-form-input
-                id="reason"
-                v-model="user.reason"
-                type="text"
-                placeholder="Entrer votre raison de la demande"
-                :class="{
-                'is-invalid': submitted && $v.user.reason.$error,
-              }"
-            ></b-form-input>
-            <div
-                v-if="submitted && !$v.user.reason.required"
-                class="invalid-feedback"
-            >
-              Raison de la demande est requis.
-            </div>
-          </b-form-group>
           <div class="mt-4 mb-4 text-end">
             <b-button type="submit" variant="magenta" class="btn-md" @click="tryToModify($event)"
             >Enregistrer
@@ -395,11 +246,6 @@ export default {
         email: "",
         firstName: "",
         lastName: "",
-        phone: "",
-        bank: "",
-        address: "",
-        reason: "",
-        profession: "",
       },
       updatePass: {
         oldPassword: "",
@@ -423,25 +269,9 @@ export default {
       lastName: {
         required,
       },
-      bank: {
-        required,
-      },
-      address: {
-        required,
-      },
       email: {
         required,
         email,
-      },
-
-      phone: {
-        required,
-      },
-      reason: {
-        required,
-      },
-      profession: {
-        required,
       },
     },
   },
@@ -450,10 +280,6 @@ export default {
     this.getUsersDetails();
   },
   methods: {
-    // Get Users Details Nav
-    getUsersDetailsNav() {
-      this.$store.dispatch("users/usersDetailsNav", localStorage.getItem('userId'));
-    },
     // Get Users Details
     getUsersDetails() {
       this.$store.dispatch("users/usersDetails", this.$route.params.id);
@@ -498,11 +324,9 @@ export default {
     },
     // fill inputs with user data
     matchUserData(res) {
-      this.user.firstName = res.name;
-      this.user.lastName = res.name;
+      this.user.firstName = res.firstName;
+      this.user.lastName = res.lastName;
       this.user.email = res.email;
-      this.user.phone = res.phone;
-      this.user.address = res.address;
     },
     // Update user Password
     tryToUpdatePassword() {
@@ -528,7 +352,7 @@ export default {
     },
     // First char from username
     userFirstChar(data) {
-      return data.name ? data.name.charAt(0).toUpperCase() : "";
+      return data.username ? data.username.charAt(0).toUpperCase() : "";
     },
   },
   computed: {

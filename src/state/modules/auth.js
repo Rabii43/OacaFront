@@ -46,6 +46,7 @@ export const actions = {
         commit('SET_IS_AUTH', false)
     },
     // register user
+    // eslint-disable-next-line no-unused-vars
     register({commit}, payload) {
         axios.post(registerUrl,
             {
@@ -54,11 +55,6 @@ export const actions = {
                 password: payload.password,
                 firstName: payload.firstname,
                 lastName: payload.lastname,
-                phone: payload.phone,
-                bank: payload.bank,
-                address: payload.address,
-                reason: payload.reason,
-                profession: payload.profession
             },
             {
                 headers: {

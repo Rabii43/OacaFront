@@ -88,7 +88,7 @@ export default {
               <div class="col-7">
                 <div class="text-primary p-4">
                   <h5 class="text-primary">Réinitialiser le mot de passe</h5>
-                  <p>Réinitialiser avec Fibourse.</p>
+                  <p>Réinitialiser avec Oaca.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">

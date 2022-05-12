@@ -3,9 +3,9 @@ import api from "../../services/axiosHeader.js";
 
 export const state = {
     users: [],
-    usersDetails: [],
-    usersDetailsNav: [],
-    isLoading: true
+    usersDetails: {},
+    isLoading: true,
+    isLoadingNav: true
 }
 
 export const mutations = {
@@ -20,6 +20,9 @@ export const mutations = {
     },
     SET_IS_LOADING(state, payload) {
         state.isLoading = payload
+    },
+    SET_IS_LOADING_NAV(state, payload) {
+        state.isLoadingNav = payload
     },
 }
 
@@ -36,42 +39,46 @@ export const getters = {
     getIsLoading(state) {
         return state.isLoading;
     },
+    getIsLoadingNav(state) {
+        return state.isLoadingNav;
+    },
 }
 
 export const actions = {
     // List all users
     listUsers({commit}) {
         api.get(usersDetails).then((res) => {
-            console.log(res.data, 'test ')
             commit('SET_USERS', res.data);
         }).catch((error) => {
             console.log(error);
         });
     },
     //users details
-    usersDetails({commit, state, rootState}, payload) {
+    usersDetails({commit}, payload) {
         commit('SET_IS_LOADING', true);
-        api.get(usersDetails + payload).then((res) => {
-            commit('SET_USERS_DETAILS', res.data);
+        api.get(usersDetails + '/' + payload).then((res) => {
+            commit('SET_USERS_DETAILS', res.data[0]);
             commit('SET_IS_LOADING', false);
         }).catch((error) => {
             console.log(error);
         });
     },
 //nav bar
-    usersDetailsNav({commit, state, rootState}, payload) {
+    usersDetailsNav({commit}, payload) {
+        commit('SET_IS_LOADING_NAV', true);
         api.get(usersDetails + '/' + payload).then((res) => {
-            commit('SET_USERS_DETAILS_NAV', res.data);
+            commit('SET_USERS_DETAILS_NAV', res.data[0]);
+            commit('SET_IS_LOADING_NAV', false);
         }).catch((error) => {
             console.log(error);
         });
     },
     /* delete User */
-    deleteUser({commit}, id) {
+    deleteUser({commit},id) {
         return api.delete(usersDetails + '/' + id);
     },
     /* Activate User */
-    activateUser({commit}, id) {
+    activateUser({commit},id) {
         return api.get(usersDetails + '/' + id + '/activate');
     },
 }

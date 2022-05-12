@@ -12,6 +12,7 @@
                   <th scope="col" style="width: 70px">#</th>
                   <th scope="col">Nom</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Roles</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -37,15 +38,15 @@
                     </h5>
                   </td>
                   <td>{{ list.email }}</td>
-<!--                                    <td>-->
-<!--                                      <div>-->
-<!--                                        <a-->
-<!--                                            class="badge badge-soft-primary font-size-11 m-1"-->
-<!--                                            v-for="(role, index) in list.roles"-->
-<!--                                            :key="index"-->
-<!--                                        >{{ role }}</a>-->
-<!--                                      </div>-->
-<!--                                    </td>-->
+                  <td>
+                    <div>
+                      <a
+                          class="badge badge-soft-primary font-size-11 m-1"
+                          v-for="(role, index) in list.roles"
+                          :key="index"
+                      >{{ role }}</a>
+                    </div>
+                  </td>
                   <td>
                     <span v-html="(list.active) ?'Active':'Non Active'"
                           :class="(list.active) ?'badge bg-success':'badge bg-danger'"
