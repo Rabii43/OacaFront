@@ -236,7 +236,6 @@ export default {
                   }
                 })
           } else {
-            //
             this.isAuthError = true;
             this.authError = "Votre compte n'est pas encore activé!";
           }
